@@ -37,6 +37,12 @@
         <mat-label>Card Number</mat-label>
         <mat-form-field appearance="outline">
             <input matInput formControlName="cardNumber" maxlength="19">
+            <mat-error *ngIf="cardNumberField.errors?.pattern">
+                Invalid Card Number
+            </mat-error>
+            <mat-error *ngIf="cardNumberField.errors?.required">
+                Card Number is required
+            </mat-error>
         </mat-form-field>
     </div>
 
@@ -44,6 +50,12 @@
         <mat-label>Card Name</mat-label>
         <mat-form-field appearance="outline">
             <input matInput formControlName="cardName">
+            <mat-error *ngIf="cardNameField.errors?.pattern">
+                Invalid Name
+            </mat-error>
+            <mat-error *ngIf="cardNameField.errors?.required">
+                Name is required
+            </mat-error>
         </mat-form-field>
     </div>
 
@@ -55,6 +67,9 @@
                     placeholder="Month">
                     <mat-option *ngFor="let m of months" [value]="m">{{m}}</mat-option>
                 </mat-select>
+                <mat-error *ngIf="cardExpiryMonth.errors?.required">
+                    Month is required
+                </mat-error>
             </mat-form-field>
         </div>
         <div class="fieldWrapper cell">
@@ -63,12 +78,21 @@
                 <mat-select matInput formControlName="cardExpiryYear" disableOptionCentering="true" placeholder="Year">
                     <mat-option *ngFor="let y of years" [value]="y">{{y}}</mat-option>
                 </mat-select>
+                <mat-error *ngIf="cardExpiryYear.errors?.required">
+                    Year is required
+                </mat-error>
             </mat-form-field>
         </div>
         <div class="fieldWrapper cell">
             <mat-label>CVV</mat-label>
             <mat-form-field appearance="outline">
                 <input matInput formControlName="cardCvv" maxlength="4" (focus)="isCvvActive=true" (blur)="isCvvActive=false">
+                <mat-error *ngIf="cardCvv.errors?.pattern">
+                    Invalid CVV
+                </mat-error>
+                <mat-error *ngIf="cardCvv.errors?.required">
+                    CVV is required
+                </mat-error>
             </mat-form-field>
         </div>
     </div>
