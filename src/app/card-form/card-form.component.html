@@ -1,12 +1,13 @@
 <section>
     <p>{{cardNumberField.value | cardMask}}</p>
+    <p>{{cardNameField.value | uppercase}}</p>
 </section>
 
 <form [formGroup]="cardForm" (ngSubmit)="submitForm()">
     <div class="fieldWrapper">
         <mat-label>Card Number</mat-label>
         <mat-form-field appearance="outline">
-            <input matInput formControlName="cardNumber">
+            <input matInput formControlName="cardNumber" maxlength="19">
         </mat-form-field>
     </div>
 
