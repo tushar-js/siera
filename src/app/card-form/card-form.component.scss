@@ -1,3 +1,5 @@
+$default-margin: 12px;
+
 form {
     height: 400px;
     width: 600px;
@@ -7,10 +9,12 @@ form {
 
 .row {
     display: flex;
+    justify-content: space-between;
 }
 
 .fieldWrapper {
-    margin: 12px;
+    margin: $default-margin;
+    margin-bottom: 0px;
     &.cell {
         width: 29%;
     }
@@ -18,4 +22,9 @@ form {
 
 mat-form-field {
     width: 100%;
+}
+
+button {
+    width: 100%;
+    margin: 0px $default-margin;
 }

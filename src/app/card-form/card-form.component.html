@@ -1,15 +1,15 @@
-<form>
+<form [formGroup]="cardForm" (ngSubmit)="submitForm()">
     <div class="fieldWrapper">
         <mat-label>Card Number</mat-label>
         <mat-form-field appearance="outline">
-            <input matInput>
+            <input matInput formControlName="cardNumber">
         </mat-form-field>
     </div>
 
     <div class="fieldWrapper">
         <mat-label>Card Name</mat-label>
         <mat-form-field appearance="outline">
-            <input matInput>
+            <input matInput formControlName="cardName">
         </mat-form-field>
     </div>
 
@@ -17,7 +17,7 @@
         <div class="fieldWrapper cell">
             <mat-label>Expiration Date</mat-label>
             <mat-form-field appearance="outline">
-                <mat-select disableOptionCentering="true" placeholder="Month">
+                <mat-select matInput formControlName="cardExpiryMonth" disableOptionCentering="true" placeholder="Month">
                     <mat-option *ngFor="let m of months" value="m">{{m}}</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -25,17 +25,23 @@
         <div class="fieldWrapper cell">
             <mat-label [ngStyle]="{visibility:'hidden'}">Hidden</mat-label>
             <mat-form-field appearance="outline">
-                <mat-select disableOptionCentering="true" placeholder="Year">
-                    <mat-option *ngFor="let y of years" value="m">{{y}}</mat-option>
+                <mat-select  matInput formControlName="cardExpiryYear" disableOptionCentering="true" placeholder="Year">
+                    <mat-option *ngFor="let y of years" value="y">{{y}}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
         <div class="fieldWrapper cell">
             <mat-label>CVV</mat-label>
             <mat-form-field appearance="outline">
-                <input matInput>
+                <input matInput  formControlName="cardCvv">
             </mat-form-field>
         </div>
+    </div>
+
+    <div class="row">
+        <button type="submit" mat-raised-button color="primary">
+            Submit
+        </button>
     </div>
 
 </form>
