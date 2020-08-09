@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material.module';
+import { MaterialModule } from './modules/material.module';
+import { CardFormComponent } from './card-form/card-form.component';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        CardFormComponent
     ],
     imports: [
         BrowserModule,
