@@ -6,11 +6,13 @@ import { MaterialModule } from './modules/material.module';
 
 import { AppComponent } from './app.component';
 import { CardFormComponent } from './card-form/card-form.component';
+import { CardMaskPipe } from './pipes/card-mask.pipe';
 
 @NgModule({
     declarations: [
         AppComponent,
-        CardFormComponent
+        CardFormComponent,
+        CardMaskPipe
     ],
     imports: [
         BrowserModule,

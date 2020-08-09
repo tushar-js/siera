@@ -1,5 +1,5 @@
 <section>
-    <p>{{cardNumberField.value}}</p>
+    <p>{{cardNumberField.value | cardMask}}</p>
 </section>
 
 <form [formGroup]="cardForm" (ngSubmit)="submitForm()">
