@@ -1,0 +1,21 @@
+form {
+    height: 400px;
+    width: 600px;
+    border-radius: 12px;
+    background-color: white
+}
+
+.row {
+    display: flex;
+}
+
+.fieldWrapper {
+    margin: 12px;
+    &.cell {
+        width: 29%;
+    }
+}
+
+mat-form-field {
+    width: 100%;
+}
