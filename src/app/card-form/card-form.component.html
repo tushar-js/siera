@@ -1,13 +1,17 @@
 <section>
-    <div class="hologram"></div>
-    <div class="logo">MasterCard</div>
+    <div class="hologram">
+        <div></div>
+    </div>
+    <div class="logo">
+        <div>MasterCard</div>
+    </div>
     <div class="cardNum">{{cardNumberField.value | cardMask}}</div>
     <div class="cardHolder">
-        Card Holder
-        {{cardNameField.value | uppercase}}
+        <p class="subtitle">Card Holder</p>
+        <p>{{(cardNameField.value || 'JOHN DOE') | uppercase}}</p>
     </div>
     <div class="expires">
-        <p>Expires</p>
+        <p class="subtitle">Expires</p>
         <p>MM/YY</p>
     </div>
 </section>
