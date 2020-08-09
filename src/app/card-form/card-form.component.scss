@@ -35,7 +35,7 @@ section {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     &.obverse {
         display: grid;
-        grid-template-columns: 100px 200px 100px;
+        grid-template-columns: 200px 100px 100px;
         grid-template-rows: auto;
         grid-template-areas: 
             "hologram ... logo"
@@ -46,7 +46,8 @@ section {
             grid-area: hologram;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
+            margin-left: $card-margin;
             & div {
                 height: 40px;
                 width: 60px;
