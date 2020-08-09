@@ -1,6 +1,15 @@
 <section>
-    <p>{{cardNumberField.value | cardMask}}</p>
-    <p>{{cardNameField.value | uppercase}}</p>
+    <div class="hologram"></div>
+    <div class="logo">MasterCard</div>
+    <div class="cardNum">{{cardNumberField.value | cardMask}}</div>
+    <div class="cardHolder">
+        Card Holder
+        {{cardNameField.value | uppercase}}
+    </div>
+    <div class="expires">
+        <p>Expires</p>
+        <p>MM/YY</p>
+    </div>
 </section>
 
 <form [formGroup]="cardForm" (ngSubmit)="submitForm()">

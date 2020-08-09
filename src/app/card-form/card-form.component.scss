@@ -7,6 +7,31 @@ section {
     width: 400px;
     margin-bottom: -$overlap;
     z-index: 2;
+
+    display: grid;
+    grid-template-columns: 100px 200px 100px;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "hologram ... logo"
+        "cardNum cardNum cardNum"
+        "cardHolder ... expires";
+    
+    & .hologram {
+        grid-area: hologram;
+    }
+    & .logo {
+        grid-area: logo;
+    }
+    & .cardNum {
+        grid-area: cardNum;
+    }
+    & .cardHolder {
+        grid-area: cardHolder;
+    }
+    & .expires {
+        grid-area: expires;
+    }
+
 }
 
 form {

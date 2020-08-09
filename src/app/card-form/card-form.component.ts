@@ -58,6 +58,12 @@ export class CardFormComponent implements OnInit, OnDestroy {
         return this.cardForm.get('cardNumber')
     }
 
+    get cardExpiryMonth() {
+        return this.cardForm.get('cardExpiryMonth')
+    }
+    get cardExpiryYear() {
+        return this.cardForm.get('cardExpiryYear')
+    }
     get cardNameField() {
         return this.cardForm.get('cardName')
     }
