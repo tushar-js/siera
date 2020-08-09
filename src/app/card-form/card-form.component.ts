@@ -16,6 +16,9 @@ export class CardFormComponent implements OnInit, OnDestroy {
     cardForm: FormGroup;
     subs: Array<Subscription>;
 
+    isCvvActive = false;
+    cardProvider = 'MasterCard'
+
     constructor(
         private fb: FormBuilder
     ) { }
@@ -66,6 +69,9 @@ export class CardFormComponent implements OnInit, OnDestroy {
     }
     get cardNameField() {
         return this.cardForm.get('cardName')
+    }
+    get cardCvv() {
+        return this.cardForm.get('cardCvv')
     }
 
     ngOnDestroy() {

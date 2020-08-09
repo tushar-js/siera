@@ -1,20 +1,36 @@
-<section>
-    <div class="hologram">
-        <div></div>
+<div class="cardWrapper">
+    <div class="cardBase" [class.flipCard]="isCvvActive">
+        <section class="obverse">
+            <div class="hologram">
+                <div></div>
+            </div>
+            <div class="logo">
+                <div>{{cardProvider}}</div>
+            </div>
+            <div class="cardNum">{{cardNumberField.value | cardMask}}</div>
+            <div class="cardHolder">
+                <p class="subtitle">Card Holder</p>
+                <p>{{(cardNameField.value || 'JOHN DOE') | uppercase}}</p>
+            </div>
+            <div class="expires">
+                <p class="subtitle">Expires</p>
+                <p>MM/YY</p>
+            </div>
+        </section>
+        <section class="reverse">
+            <div class="magStrip"></div>
+            <div class="cvv">
+                <p>CVV</p>
+                <div>
+                    <span>{{cardCvv.value? '*'.repeat(cardCvv.value.length) : ''}}</span>
+                </div>
+            </div>
+            <div class="provider">
+                {{cardProvider}}
+            </div>
+        </section>
     </div>
-    <div class="logo">
-        <div>MasterCard</div>
-    </div>
-    <div class="cardNum">{{cardNumberField.value | cardMask}}</div>
-    <div class="cardHolder">
-        <p class="subtitle">Card Holder</p>
-        <p>{{(cardNameField.value || 'JOHN DOE') | uppercase}}</p>
-    </div>
-    <div class="expires">
-        <p class="subtitle">Expires</p>
-        <p>MM/YY</p>
-    </div>
-</section>
+</div>
 
 <form [formGroup]="cardForm" (ngSubmit)="submitForm()">
     <div class="fieldWrapper">
@@ -35,7 +51,8 @@
         <div class="fieldWrapper cell">
             <mat-label>Expiration Date</mat-label>
             <mat-form-field appearance="outline">
-                <mat-select matInput formControlName="cardExpiryMonth" disableOptionCentering="true" placeholder="Month">
+                <mat-select matInput formControlName="cardExpiryMonth" disableOptionCentering="true"
+                    placeholder="Month">
                     <mat-option *ngFor="let m of months" value="m">{{m}}</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -43,7 +60,7 @@
         <div class="fieldWrapper cell">
             <mat-label [ngStyle]="{visibility:'hidden'}">Hidden</mat-label>
             <mat-form-field appearance="outline">
-                <mat-select  matInput formControlName="cardExpiryYear" disableOptionCentering="true" placeholder="Year">
+                <mat-select matInput formControlName="cardExpiryYear" disableOptionCentering="true" placeholder="Year">
                     <mat-option *ngFor="let y of years" value="y">{{y}}</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -51,7 +68,7 @@
         <div class="fieldWrapper cell">
             <mat-label>CVV</mat-label>
             <mat-form-field appearance="outline">
-                <input matInput  formControlName="cardCvv">
+                <input matInput formControlName="cardCvv" (blur)="isCvvActive=false" (focus)="isCvvActive=true">
             </mat-form-field>
         </div>
     </div>
