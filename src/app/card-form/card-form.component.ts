@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { pairwise, startWith } from 'rxjs/operators';
 
 @Component({
@@ -34,22 +34,26 @@ export class CardFormComponent implements OnInit, OnDestroy {
             cardName: ['', [Validators.required]],
             cardExpiryMonth: [null, [Validators.required]],
             cardExpiryYear: [null, [Validators.required]],
-            cardCvv: [null, [Validators.required]],
+            cardCvv: [null, [Validators.required, Validators.maxLength(4)]],
         });
 
         this.handleNumberField();
     }
 
     handleNumberField() {
-        let ob = this.cardNumberField.valueChanges
-        .pipe(startWith(''), pairwise())
-        .subscribe( ([prev, curr]: [string, string]) => {
+        let pub: Observable<[string, string]> = this.cardNumberField.valueChanges
+        .pipe(
+            startWith(''), 
+            pairwise()
+        );
+
+        let sub: Subscription = pub.subscribe( ([prev, curr]: [string, string]) => {
             let len = curr.length;
             if([4,9,14].indexOf(len) > -1 && len > prev.length) {
                 this.cardNumberField.setValue(curr + ' ');
             }
-        })
-
+        });
+        this.subs.push(sub);
     }
 
     submitForm() {

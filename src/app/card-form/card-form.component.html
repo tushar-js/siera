@@ -14,7 +14,7 @@
             </div>
             <div class="expires">
                 <p class="subtitle">Expires</p>
-                <p>MM/YY</p>
+                <p>{{cardExpiryMonth.value || 'MM'}}/{{cardExpiryYear.value?.substring(2) || 'YY'}}</p>
             </div>
         </section>
         <section class="reverse">
@@ -53,7 +53,7 @@
             <mat-form-field appearance="outline">
                 <mat-select matInput formControlName="cardExpiryMonth" disableOptionCentering="true"
                     placeholder="Month">
-                    <mat-option *ngFor="let m of months" value="m">{{m}}</mat-option>
+                    <mat-option *ngFor="let m of months" [value]="m">{{m}}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
@@ -61,14 +61,14 @@
             <mat-label [ngStyle]="{visibility:'hidden'}">Hidden</mat-label>
             <mat-form-field appearance="outline">
                 <mat-select matInput formControlName="cardExpiryYear" disableOptionCentering="true" placeholder="Year">
-                    <mat-option *ngFor="let y of years" value="y">{{y}}</mat-option>
+                    <mat-option *ngFor="let y of years" [value]="y">{{y}}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
         <div class="fieldWrapper cell">
             <mat-label>CVV</mat-label>
             <mat-form-field appearance="outline">
-                <input matInput formControlName="cardCvv" (blur)="isCvvActive=false" (focus)="isCvvActive=true">
+                <input matInput formControlName="cardCvv" maxlength="4" (focus)="isCvvActive=true" (blur)="isCvvActive=false">
             </mat-form-field>
         </div>
     </div>
