@@ -1,8 +1,18 @@
 $default-margin: 12px;
+$overlap: 100px;
+
+section {
+    background-color: orangered;
+    height: 200px;
+    width: 400px;
+    margin-bottom: -$overlap;
+    z-index: 2;
+}
 
 form {
     height: 400px;
     width: 600px;
+    padding-top: $overlap;
     border-radius: 12px;
     background-color: white
 }

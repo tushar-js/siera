@@ -34,8 +34,11 @@ export class CardFormComponent implements OnInit {
 
     submitForm() {
         console.log('Submitted:');
-        console.log(this.cardForm.value);
-        
+        console.log(this.cardForm.value);  
+    }
+
+    get cardNumberField() {
+        return this.cardForm.get('cardNumber')
     }
 
 }
