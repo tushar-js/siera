@@ -10,8 +10,8 @@ import { pairwise, startWith } from 'rxjs/operators';
 })
 export class CardFormComponent implements OnInit, OnDestroy {
 
-    months: Array<number>;
-    years: Array<number>;
+    months: Array<string>;
+    years: Array<string>;
 
     cardForm: FormGroup;
     subs: Array<Subscription>;
@@ -21,10 +21,10 @@ export class CardFormComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit(): void {
-        this.months = Array.from(Array(12), (el, i) => i+1);
+        this.months = Array.from(Array(12), (el, i) => (i+1).toString().padStart(2, '0'));
 
         //assuming card expiry year ranges from 2020 to 2040
-        this.years = Array.from(Array(21), (el, i) => i+2020);
+        this.years = Array.from(Array(21), (el, i) => (i+2020).toString());
 
         this.cardForm = this.fb.group({
             cardNumber: ['', [Validators.required, Validators.maxLength(19)]],
