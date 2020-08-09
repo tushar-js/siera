@@ -1,42 +1,38 @@
 <form>
     <div class="fieldWrapper">
+        <mat-label>Card Number</mat-label>
         <mat-form-field appearance="outline">
-            <mat-label>Card Number</mat-label>
-            <input matInput placeholder="Placeholder">
-        </mat-form-field>
-    </div>
-    <div class="fieldWrapper">
-        <mat-form-field appearance="outline">
-            <mat-label>Card Name</mat-label>
             <input matInput>
         </mat-form-field>
     </div>
+
+    <div class="fieldWrapper">
+        <mat-label>Card Name</mat-label>
+        <mat-form-field appearance="outline">
+            <input matInput>
+        </mat-form-field>
+    </div>
+
     <div class="row">
         <div class="fieldWrapper cell">
+            <mat-label>Expiration Date</mat-label>
             <mat-form-field appearance="outline">
-                <mat-label>Month</mat-label>
-                <mat-select>
-                    <mat-option>None</mat-option>
-                    <mat-option value="option1">Option 1</mat-option>
-                    <mat-option value="option2">Option 2</mat-option>
-                    <mat-option value="option3">Option 3</mat-option>
+                <mat-select disableOptionCentering="true" placeholder="Month">
+                    <mat-option *ngFor="let m of months" value="m">{{m}}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
         <div class="fieldWrapper cell">
+            <mat-label [ngStyle]="{visibility:'hidden'}">Hidden</mat-label>
             <mat-form-field appearance="outline">
-                <mat-label>Year</mat-label>
-                <mat-select>
-                    <mat-option>None</mat-option>
-                    <mat-option value="option1">Option 1</mat-option>
-                    <mat-option value="option2">Option 2</mat-option>
-                    <mat-option value="option3">Option 3</mat-option>
+                <mat-select disableOptionCentering="true" placeholder="Year">
+                    <mat-option *ngFor="let y of years" value="m">{{y}}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
         <div class="fieldWrapper cell">
+            <mat-label>CVV</mat-label>
             <mat-form-field appearance="outline">
-                <mat-label>CVV</mat-label>
                 <input matInput>
             </mat-form-field>
         </div>
